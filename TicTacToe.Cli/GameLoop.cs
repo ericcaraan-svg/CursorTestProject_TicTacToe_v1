@@ -15,6 +15,7 @@ public class GameLoop
     
     public async Task Run()
     {
+        Console.Clear();
         Render(_board);
 
         while (true)
@@ -107,8 +108,7 @@ public class GameLoop
             }
             catch (Exception ex)
             {
-                Render(_board);
-                Console.WriteLine($"Error: {ex.Message}");            
+                Render(_board, ex.Message);
                 Console.Write("Please try again (row,col format): ");
                 input = Console.ReadLine();
                 
@@ -130,8 +130,9 @@ public class GameLoop
         Console.WriteLine($"Bot moved: ({botMove.Row},{botMove.Col})");
     }
     
-    private static void Render(Board b)
+    private static void Render(Board b, string? errorMessage = null)
     {
+        Console.Clear();
         Console.WriteLine("\n     1   2   3");
         Console.WriteLine("   ┌───┬───┬───┐");
         
@@ -180,6 +181,15 @@ public class GameLoop
         Console.WriteLine("   └───┴───┴───┘");
         Console.WriteLine($"Current Player: {b.CurrentPlayer}");
         Console.WriteLine();
+        
+        // Display error message if provided
+        if (!string.IsNullOrEmpty(errorMessage))
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Error: {errorMessage}");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
     }
     
     private static string GetGameStatusMessage(GameStatus status)
