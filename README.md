@@ -65,3 +65,6 @@ Use one or more of these prompts in Cursor:
 - *“Identify weak spots in the current design and propose refactors that improve testability or clarity.”*
 - *“Pick one Small feature and draft a task checklist with acceptance tests. Then implement it.”*
 - *“Write a short README ‘What I’d Do Next’ section summarizing potential upgrades.”*
+
+## What I'd do Next (Version 2)
+Tic Tac Toe Moveable - transform this classic game by introducing a two-phase system: first, players strategically place only 3 pieces each, then enter a movement phase where they can reposition pieces to adjacent positions until one is declared a winner. 
